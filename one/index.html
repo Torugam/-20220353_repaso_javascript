@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de JS</title>
+    <link rel="stylesheet" href="css/practica.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1 class="text-center">API POKEMÓN</h1>
+    <h2 class="text-center">DITTO</h2>
+
+    <div class="container">
+        <div class="alert alert-primary" role="alert" id="contenido1">
+            <p class="fs-1 text-color text-xxl-star">NOMBRE</p>
+        </div>
+
+        <div class="alert alert-secondary" role="alert" id="contenido2">
+            <p class="fs-1 text-color text-xxl-star">ORDEN</p>
+        </div>
+        <div class="alert alert-secondary" role="alert" id="contenido2">
+            <img src="img/ditto.png" class="img-fluid" alt="img-ditto">
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+        let url = "https://pokeapi.co/api/v2/pokemon/ditto";
+
+        const consumirApi = async () => {
+            const respuesta = await fetch(url);
+            const resultado = await respuesta.json();
+
+            // Obtener una referencia al div
+            let contenido1 = document.getElementById("contenido1");
+            let contenido2 = document.getElementById("contenido2");
+            let contenido3 = document.getElementById("contenido3");
+
+            // Crear elementos de texto
+            let texto1 = document.createElement("p");
+            let texto2 = document.createElement("p");
+            let texto3 = document.createElement("p");
+
+            texto1.innerText = resultado.name;
+            texto2.innerText = resultado.order;
+
+            contenido1.appendChild(texto1);
+            contenido2.appendChild(texto2);
+            console.log(resultado)
+        }
+
+        consumirApi();
+    </script>
+</body>
+
+</html>
